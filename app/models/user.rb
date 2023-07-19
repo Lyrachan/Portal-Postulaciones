@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
 
   has_and_belongs_to_many :publications
-  has_one :image, as: :imageable
+  has_one_attached :image # Alterado para funcionar junto con activestorage, como en el modelo de publication
+  # has_one :image, as: :imageable # Previo
   # has_many :images, as: :imageable # Previo
 
   # accepts_nested_attributes_for :images # Previo, se usa en caso de que acepte varias imágenes

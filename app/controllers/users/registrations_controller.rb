@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     super do |resource|
-      resource.build_image  # Previamente estaba como resource.images.build, pero como el usuario sólo tiene una imagen, no lo requiere
+      resource.build_image_blob # unless resource.image.present? # Previamente estaba como resource.images.build, pero como el usuario sólo tiene una imagen, no lo requiere
     end
   end
 

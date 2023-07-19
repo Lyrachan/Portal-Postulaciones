@@ -31,6 +31,26 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :name, autocomplete: "Nombre de usuario" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :edad %><br />
+    <%= f.text_field :age, autocomplete: "Ingresa tu edad" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripción_laboral %><br />
+    <%= f.text_field :description, autocomplete: "Añade una descripción" %>
+  </div>
+
+  <div>
+    <p class="fw-bold">Foto de perfil: <p> <br>
+    <%= f.file_field :images, class: 'form-control' %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
