@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  root "publications#index" # Quizás sea necesario redirigir a otra página "home#index" en caso de no estar con sesión iniciada
 end

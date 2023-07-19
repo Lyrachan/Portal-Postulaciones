@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg", style= "color: #d6c1bd; background-color: #693950">
+    <div class="container-fluid">
+      <!-- image_tag de abajo en caso de querer agregar una imagen -->
+      <!-- < %= image_tag "https://img-fotki.yandex.ru/get/60380/200418627.158/0_16d9e0_8298de2a_orig.png", style: "max-width: 5rem;" %> --> 
+      <%= link_to "Portal Postulaciones", root_path, class: "navbar-brand fs-2 btn fw-bold", style: "color: #30D5C8;" %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <%= link_to 'Publicaciones', publications_path, class: "btn text-info" %>
+            <% if user_signed_in? %>
+
+                <!-- Esta línea será para el contenido al cual puede acceder el administrador -->
+
+                <!-- < % if current_user.role == 1 %> 
+                    <%= link_to "Mis Publicaciones", publications_path, class: "btn text-info" %>
+                < % end %> -->  
+
+
+                <% if current_user.image.present? %> <!-- Cuidado con el nombre del atributo que se refiere a foto -->
+                    <%= image_tag current_user.image, style: "height: 2rem; width: 2rem", class:"rounded-circle" %>
+                <% end %>
+
+                <%= button_to "#{current_user.email}", root_path, class:"nav-link disabled btn btn-primary-outline", style: "color: #37FD12;", disable: true %>
+                <%= link_to "Editar Perfil", edit_user_registration_path, class: "btn text-info" %>
+                <%= button_to 'Cerrar Sesión', destroy_user_session_path, class: "nav-link active btn text-danger", method: :delete %>
+            <% else %>
+          <%= link_to "Inicio", root_path, class: "nav-link active btn text-info" %>
+          <%= link_to "Iniciar Sesión", new_user_session_path, class: "nav-link active btn text-info" %>
+          <%= link_to "Registrarse", new_user_registration_path, class: "nav-link active btn text-info" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>

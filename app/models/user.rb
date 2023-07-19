@@ -8,7 +8,10 @@ class User < ApplicationRecord
 
 
   has_and_belongs_to_many :publications
-  has_many :images, as: :imageable
+  has_one :image, as: :imageable
+  # has_many :images, as: :imageable # Previo
 
-  accepts_nested_attributes_for :images
+  # accepts_nested_attributes_for :images # Previo, se usa en caso de que acepte varias imágenes
+
+  enum :role, [:normal_user, :admin]
 end
