@@ -9,4 +9,10 @@
     <%= publication.description %>
   </p>
 
+  <p class="mb-2">
+    <% publication.images.each do |img| %>
+      <%= image_tag img, style: "max-height: 32rem", class: "me-2 mb-2" %>
+    <% end %>
+  </p>
+
 </div>

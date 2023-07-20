@@ -19,8 +19,8 @@
                 < % end %> -->  
 
 
-                <% if current_user.image.present? %> <!-- Cuidado con el nombre del atributo que se refiere a foto -->
-                    <%= image_tag current_user.image, style: "height: 2rem; width: 2rem", class:"rounded-circle" %>
+                <% if current_user.images.present? %> <!-- Cuidado con el nombre del atributo que se refiere a foto -->
+                    <%= image_tag current_user.images.last, style: "height: 2rem; width: 2rem", class:"rounded-circle" %>
                 <% end %>
 
                 <%= button_to "#{current_user.email}", root_path, class:"nav-link disabled btn btn-primary-outline", style: "color: #37FD12;", disable: true %>

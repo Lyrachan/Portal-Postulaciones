@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters
 
   # GET /resource/sign_up
   def new
     super do |resource|
-      resource.build_image_blob # unless resource.image.present? # Previamente estaba como resource.images.build, pero como el usuario sólo tiene una imagen, no lo requiere
+      resource.images.build # Previamente estaba como resource.images.build, pero como el usuario sólo tiene una imagen, no lo requiere
     end
   end
 
@@ -18,13 +17,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   # def edit
-  #   super
+  #   super do |resource|
+  #     resource.build_image_blob # unless resource.image.present? # Previamente estaba como resource.images.build, pero como el usuario sólo tiene una imagen, no lo requiere
+  #   end
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super do |resource|
+      resource.images.build # Previamente estaba como resource.images.build, pero como el usuario sólo tiene una imagen, no lo requiere
+    end
+  end
 
   # DELETE /resource
   # def destroy

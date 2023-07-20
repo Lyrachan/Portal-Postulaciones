@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+user = User.create(email: "jefe@jefe.com", password: "123456", name: "Jefe", role: 1)
+user.image.attach(io: URI.open(https://pruebam6-jorge-lira.s3.us-west-1.amazonaws.com/Da+Phuc.jpg), filename: 'Da Phuc.jpg')
