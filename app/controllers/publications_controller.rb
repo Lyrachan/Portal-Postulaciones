@@ -58,6 +58,21 @@ class PublicationsController < ApplicationController
     end
   end
 
+#########################################################################
+
+# Está copiado desde Crazy4Cats, así que lo tengo que adaptar para este proyecto
+
+# before_action :authenticate_user!, except: [:index, :show]  # Para que los no ingresados puedan sólo ver las reacciones, pero no reaccionar
+
+def new_user_postulation
+  @publication = Publication.find(params[:publication_id]) if params[:publication_id]
+  current_user.publications << @publication
+
+  redirect_to @publication, notice: "Postulación recibida"
+end
+#########################################################################
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_publication

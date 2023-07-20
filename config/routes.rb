@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  post '/new_user_postulation', to: 'publications#new_user_postulation', as: 'new_user_postulation'
   # Defines the root path route ("/")
   # root "articles#index"
 

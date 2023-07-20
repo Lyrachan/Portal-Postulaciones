@@ -14,9 +14,10 @@
 
                 <!-- Esta línea será para el contenido al cual puede acceder el administrador -->
 
-                <!-- < % if current_user.role == 1 %> 
-                    <%= link_to "Mis Publicaciones", publications_path, class: "btn text-info" %>
-                < % end %> -->  
+                <% if current_user.role == "admin" %> 
+                    <!-- < %= link_to "Mis Publicaciones", publications_path, class: "btn text-info" %> -->
+                    <%= link_to "Registrar Usuario", new_user_registration_path, class: "nav-link active btn text-info" %>
+                <% end %>
 
 
                 <% if current_user.images.present? %> <!-- Cuidado con el nombre del atributo que se refiere a foto -->
@@ -27,9 +28,8 @@
                 <%= link_to "Editar Perfil", edit_user_registration_path, class: "btn text-info" %>
                 <%= button_to 'Cerrar Sesión', destroy_user_session_path, class: "nav-link active btn text-danger", method: :delete %>
             <% else %>
-          <%= link_to "Inicio", root_path, class: "nav-link active btn text-info" %>
-          <%= link_to "Iniciar Sesión", new_user_session_path, class: "nav-link active btn text-info" %>
-          <%= link_to "Registrarse", new_user_registration_path, class: "nav-link active btn text-info" %>
+              <%= link_to "Inicio", root_path, class: "nav-link active btn text-info" %>
+              <%= link_to "Iniciar Sesión", new_user_session_path, class: "nav-link active btn text-info" %>
             <% end %>
         </div>
       </div>

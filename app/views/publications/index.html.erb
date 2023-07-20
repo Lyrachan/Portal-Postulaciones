@@ -11,4 +11,6 @@
   <% end %>
 </div>
 
-<%= link_to "New publication", new_publication_path %>
+<% if user_signed_in? && current_user.role == "admin" %> <!-- Primero el signed_in, luego el current_user -->
+  <%= link_to "New publication", new_publication_path %>
+<% end %>
