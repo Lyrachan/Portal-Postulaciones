@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   post '/new_user_postulation', to: 'publications#new_user_postulation', as: 'new_user_postulation'
   get '/mispostulaciones', to: 'publications#mypostulations', as: 'user_postulations'
-  post '/crear_usuario'
+  get '/registrar_usuario', to: 'publications#register_user', as: 'register_user'
+  post '/crear_usuario', to: 'publications#create_user', as: 'create_user'
   # Defines the root path route ("/")
   # root "articles#index"
 

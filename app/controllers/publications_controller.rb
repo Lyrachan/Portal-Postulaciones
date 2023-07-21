@@ -1,5 +1,11 @@
 class PublicationsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_publication, only: %i[ show edit update destroy ]
+  
+  # before_action only: [:create_user, :new, :create, :update, :destroy] do
+  #   authorize_request("admin")  # Sólo el administrador puede crear usuarios, crear y editar publicaciones
+  # end
 
   # GET /publications or /publications.json
   def index
@@ -69,10 +75,30 @@ class PublicationsController < ApplicationController
   end
 
   def register_user
-    @user = User.new()
-    @user = User.find(params[:name, :age, :description, :role, images: []])
+    if current_user.admin?
+      @user = User.new
+    else
+      flash[:alert] = "No tienes permiso para realizar esta acción"
+      redirect_to root_path
+    end
   end
 
+  def create_user
+    if current_user.admin?
+      @user = User.new(user_params)
+        if @user.save
+          flash[:alert] = "El usuario se ha registrado exitosamente"
+          redirect_to register_user_path
+        else
+          flash[:alert] = "El usuario no ha podido registrarse"
+          render :register_user
+        end
+    else
+      flash[:alert] = "No tienes permiso para realizar esta acción"
+      redirect_to root_path
+    end
+  end
+  
 
 # Está copiado desde Crazy4Cats, así que lo tengo que adaptar para este proyecto
 
@@ -88,6 +114,7 @@ end
 
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_publication
       @publication = Publication.find(params[:id])
@@ -96,5 +123,9 @@ end
     # Only allow a list of trusted parameters through.
     def publication_params
       params.require(:publication).permit(:name, :description, images: [] )
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :name, :age, :description, :role, images: [])
     end
 end
