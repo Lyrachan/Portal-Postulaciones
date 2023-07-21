@@ -2,10 +2,10 @@
 
 <%= render @publication %>
 
-<% if user_signed_in? && @publication.users.include?(current_user) == false %>
+<% if user_signed_in? && @publication.users.include?(current_user) == false && current_user.role == "normal_user" %>
   <%= button_to "Postular", new_user_postulation_path(publication_id: @publication.id), method: :post, class: "btn btn-info text-white mb-2" %>
 <% else %>
-  <h5>Ya has postulado a esta publicación</h5>  
+  <h5>Ya se ha postulado a esta publicación</h5>  
 <% end %>
 
 

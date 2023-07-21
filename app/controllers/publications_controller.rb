@@ -2,6 +2,8 @@ class PublicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_publication, only: %i[ show edit update destroy ]
+
+  # Establecí "autentificación" para que sólo el administrador pueda crear usuario dentro de los métodos create_user y register_user
   
   # before_action only: [:create_user, :new, :create, :update, :destroy] do
   #   authorize_request("admin")  # Sólo el administrador puede crear usuarios, crear y editar publicaciones
