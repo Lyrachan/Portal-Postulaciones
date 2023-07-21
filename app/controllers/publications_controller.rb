@@ -8,6 +8,7 @@ class PublicationsController < ApplicationController
 
   # GET /publications/1 or /publications/1.json
   def show
+    @Users = User.all
   end
 
   # GET /publications/new
@@ -59,6 +60,19 @@ class PublicationsController < ApplicationController
   end
 
 #########################################################################
+
+  def mypostulations
+    @users = User.all
+    user_id = current_user.id
+    user = User.find(user_id)
+    @postulations = user.publications # Me resultó, de alguna manera que aún no determino, pero me manejo mejor con controladores :D
+  end
+
+  def register_user
+    @user = User.new()
+    @user = User.find(params[:name, :age, :description, :role, images: []])
+  end
+
 
 # Está copiado desde Crazy4Cats, así que lo tengo que adaptar para este proyecto
 

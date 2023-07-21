@@ -1,0 +1,9 @@
+<!-- Me costó encontrar la forma de hacer esto, pero tiene todo el sentido al crear un análogo a "@" con la variable de abajo
+que rescata todos los registros de la tabla intermedia haciendo referencia al usuario por su id.
+Aprendí a usar mejor el rails console, así que puedo buscar todo siempre y cuando esté relacionado -->
+<% @postulations.each do |postulation| %>
+    <%= render postulation %>
+    <p>
+        <%= link_to "Ver Publicación", postulation %>
+    </p>
+<% end %>
