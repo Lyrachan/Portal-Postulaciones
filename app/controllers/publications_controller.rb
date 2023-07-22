@@ -89,6 +89,8 @@ class PublicationsController < ApplicationController
     if current_user.admin?
       @user = User.new(user_params)
         if @user.save
+          UserMailer.with(user: @user).welcome_email.deliver_now  # Con el ActionMailer, puede enviar correos a usuarios nuevos :3
+
           flash[:alert] = "El usuario se ha registrado exitosamente"
           redirect_to register_user_path
         else

@@ -11,9 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super do |resource|
+      if resource.persisted?  # La línea .persisted? verifica si el usuario ha sido guardado en la base de datos
+        UserMailer.with(user: @user).welcome_email.deliver_now  # No funcionará en este caso, porque el usuario lo estoy registrando
+                                                                # con publications_controller.rb
+      end
+    end      
+  end
 
   # GET /resource/edit
   # def edit

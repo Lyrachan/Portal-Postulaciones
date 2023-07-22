@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
     # before_action :configure_permitted_parameters, if: :devise_controller?  # Para ejecutar el método en todos los controladores, pero aquí se especifica para los controladores de devise
 
+
+
+
+    # Acción definida para user, pero establecida en 
+
+
     protected
 
     def configure_permitted_parameters
