@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/index'
   resources :publications # Borrar except: :create si no funciona
   devise_for :users, except: :create, controllers: {
     sessions: 'users/sessions',
@@ -8,10 +9,10 @@ Rails.application.routes.draw do
   post '/new_user_postulation', to: 'publications#new_user_postulation', as: 'new_user_postulation'
   get '/mispostulaciones', to: 'publications#mypostulations', as: 'user_postulations'
   get '/registrar_usuario', to: 'publications#register_user', as: 'register_user'
-  get '/Bienvenida', to: 'publications#landing_page', as: 'landing_page'
   post '/crear_usuario', to: 'publications#create_user', as: 'create_user'
+  get '/portal_postulaciones', to: 'pages#index'
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root "publications#index" # Quizás sea necesario redirigir a otra página "home#index" en caso de no estar con sesión iniciada
+  root "pages#index" # Quizás sea necesario redirigir a otra página "home#index" en caso de no estar con sesión iniciada
 end

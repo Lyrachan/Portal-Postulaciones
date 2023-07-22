@@ -13,7 +13,9 @@
 
   <body>
 
-    <%= render 'componentes/navbar' %>
+    <% unless request.fullpath == '/' %>
+      <%= render 'componentes/navbar' %>
+    <% end %>
 
     <div class="container">
       <%= yield %>

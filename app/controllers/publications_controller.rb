@@ -10,14 +10,8 @@ class PublicationsController < ApplicationController
   # end
 
 
-  def landing_page
-  end
-
   # GET /publications or /publications.json
   def index
-    if user_signed_in? == false
-      render :landing_page
-    end
     @publications = Publication.all
   end
 

@@ -24,7 +24,7 @@ object_key2 = 'Da Phuc.jpg'
 image_file = s3_client.get_object(bucket: bucket_name, key: object_key).body
 image_file2 = s3_client.get_object(bucket: bucket_name, key: object_key2).body
 
-user1 = User.create(email: "jefe@jefe.com", password: "123456", name: "Jefe", role: 1)
+user1 = User.create(email: "esteban@jefe.com", password: "123456", name: "Esteban", role: 1)
 user1.images.attach(io: image_file, filename: 'help.png')
 
 user2 = User.create(email: "user1@user.com", password: "123456", name: "Da Phuc")
