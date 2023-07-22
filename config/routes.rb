@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/new_user_postulation', to: 'publications#new_user_postulation', as: 'new_user_postulation'
   get '/mispostulaciones', to: 'publications#mypostulations', as: 'user_postulations'
   get '/registrar_usuario', to: 'publications#register_user', as: 'register_user'
+  get '/Bienvenida', to: 'publications#landing_page', as: 'landing_page'
   post '/crear_usuario', to: 'publications#create_user', as: 'create_user'
   # Defines the root path route ("/")
   # root "articles#index"

@@ -9,8 +9,15 @@ class PublicationsController < ApplicationController
   #   authorize_request("admin")  # Sólo el administrador puede crear usuarios, crear y editar publicaciones
   # end
 
+
+  def landing_page
+  end
+
   # GET /publications or /publications.json
   def index
+    if user_signed_in? == false
+      render :landing_page
+    end
     @publications = Publication.all
   end
 
@@ -68,6 +75,7 @@ class PublicationsController < ApplicationController
   end
 
 #########################################################################
+                  # Controladores adicionales
 
   def mypostulations
     @users = User.all
