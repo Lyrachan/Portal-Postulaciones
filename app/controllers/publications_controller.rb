@@ -87,9 +87,10 @@ class PublicationsController < ApplicationController
 
   def create_user
     if current_user.admin?
-      @user = User.new(user_params)
+      @user = User.new(user_params) # @user será el usuario nuevo, por lo que aquí se establecen los parámetros para que los alamacene temporalmente la página
         if @user.save
           UserMailer.with(user: @user).welcome_email.deliver_now  # Con el ActionMailer, puede enviar correos a usuarios nuevos :3
+                                                                  # En este caso, se está enviando al usuario nuevo.
 
           flash[:alert] = "El usuario se ha registrado exitosamente"
           redirect_to register_user_path
@@ -109,8 +110,12 @@ class PublicationsController < ApplicationController
 # before_action :authenticate_user!, except: [:index, :show]  # Para que los no ingresados puedan sólo ver las reacciones, pero no reaccionar
 
 def new_user_postulation
+  
   @publication = Publication.find(params[:publication_id]) if params[:publication_id]
   current_user.publications << @publication
+
+  # @user = params[:user] # Esta línea estaba generando error, porque en la línea de arriba el usuario está planteado como current_user
+  PublicationsMailer.with(user: current_user, publication: @publication).postulate_user.deliver_now
 
   redirect_to @publication, notice: "Postulación recibida"
 end
