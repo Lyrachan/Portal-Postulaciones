@@ -1,12 +1,11 @@
-require "test_helper"
+require 'test_helper'
 
 class PublicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @publication = publications(:first_publication, :second_publication)
+    @publication = publications(:first_publication)
   end
 
   test "should get index" do
-    sign_in users(:one)
     get publications_url
     assert_response :success
   end
@@ -17,8 +16,13 @@ class PublicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create publication" do
+    sign_in users(:one)
     assert_difference("Publication.count") do
-      post publications_url, params: { publication: { description: @publication.description, name: @publication.name } }
+      post publications_url, params:
+      { publication: {
+        name: @publication.name,
+          description: @publication.description
+          }}
     end
 
     assert_redirected_to publication_url(Publication.last)

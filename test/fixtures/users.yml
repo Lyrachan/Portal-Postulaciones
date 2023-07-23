@@ -15,5 +15,5 @@ two:
   email: test2@mail.com
   encrypted_password: $2a$12$8BuCnBcRpsFk2CNUz3xajee0zJPPbhkKWx7rQt2eiXalYXO3my44q
   name: Test 2 User
-  role: 2
+  role: 0
 # column: value
