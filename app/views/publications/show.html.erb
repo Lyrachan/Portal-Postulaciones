@@ -8,10 +8,13 @@
   <h5>Ya se ha postulado a esta publicación</h5>  
 <% end %>
 
+<div>
+  <% if user_signed_in? && current_user.role == "admin" %>
+  <%= link_to "Editar Publicación", edit_publication_path(@publication), class:"btn btn-success text-white mb-2" %>
+  <!-- < %= button_to "Eliminar Publicación", @publication, method: :delete, class: "btn btn-danger text-white mt-5" %> -->
+  <% end %>
+</div>
 
 <div>
-  <%= link_to "Edit this publication", edit_publication_path(@publication) %> |
-  <%= link_to "Back to publications", publications_path %>
-
-  <%= button_to "Destroy this publication", @publication, method: :delete %>
+  <%= link_to "Volver a Publicaciones", publications_path, class:"btn btn-info text-white my-3" %>  
 </div>

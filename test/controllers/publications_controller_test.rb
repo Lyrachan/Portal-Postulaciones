@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PublicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @publication = publications(:first_publication)
+    @publication = publications(:two)
   end
 
   test "should get index" do

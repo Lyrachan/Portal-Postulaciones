@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-first_publication:
+one:
   name: Primera publicacion
   description: Informacion
 
-second_publication:
+two:
   name: Segunda publicacion
   description: Informacion
 
-third_publication:
+three:
   name: Tercera publicacion
   description: Informacion

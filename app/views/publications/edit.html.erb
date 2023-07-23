@@ -1,10 +1,13 @@
-<h1>Editing publication</h1>
+<h1 class="fw-bold mt-3 mb-4" style="color: #693950;">Editar Publicación</h1>
 
 <%= render "form", publication: @publication %>
 
 <br>
 
 <div>
-  <%= link_to "Show this publication", @publication %> |
-  <%= link_to "Back to publications", publications_path %>
+  <%= link_to "Ver Publicación", @publication, class: "btn btn-primary text-white my-2" %>
+  <% if user_signed_in? && current_user.role == "admin" %>
+    <%= button_to "Eliminar Publicación", @publication, method: :delete, class: "btn btn-danger text-white mt-5 mb-2" %> <br>
+  <% end %>
+  <%= link_to "Volver a las Publicaciones", publications_path, class: "btn btn-info text-white my-2 mt-4" %>
 </div>

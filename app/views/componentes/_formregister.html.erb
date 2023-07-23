@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>Registrar usuario</h2>
+    <h2 class="mt-4 mb-2">Registrar usuario</h2>
   
     <%= form_for(@user, url: create_user_path, method: :post) do |f| %>
     <!-- Si aparece el error de undefined_method 'model_name' for, hay que eliminar la palabra 'model:' al inicio de la función -->
@@ -10,34 +10,34 @@
     </div>
   <% end %>
   
-      <div class="row">
+      <div class="row mt-4">
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group mb-1">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
           </div>
   
-          <div class="form-group">
-            <%= f.label :password %>
+          <div class="form-group mb-1">
+            <%= f.label :contraseña %>
             <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
           </div>
   
-          <div class="form-group">
-            <%= f.label :password_confirmation %><br />
+          <div class="form-group mb-1">
+            <%= f.label :confirmar_contraseña %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
           </div>
   
-          <div class="form-group">
+          <div class="form-group mb-1">
             <%= f.label :nombre %><br />
             <%= f.text_field :name, autocomplete: "Nombre de usuario", class: "form-control" %>
           </div>
         </div>
   
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group mb-1">
             <p class="fw-bold">Foto de perfil:</p>
             <%= f.file_field :images, multiple: true, class: 'form-control' %>
           </div>
@@ -45,7 +45,7 @@
       </div>
   
       <div class="actions">
-        <%= f.submit "Registrar", class: "btn btn-primary" %>
+        <%= f.submit "Registrar", class: "btn btn-primary mt-3" %>
       </div>
     <% end %>
   

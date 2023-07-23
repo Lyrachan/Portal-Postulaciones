@@ -1,18 +1,23 @@
 <div id="<%= dom_id publication %>">
-  <p>
-    <strong>Name:</strong>
-    <%= publication.name %>
-  </p>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <p class="mb-2">
+        <% publication.images.each do |img| %>
+          <%= image_tag img, style: "max-width: 32rem", class: "me-2 mb-2" %>
+        <% end %>
+      </p>
+    </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= publication.description %>
-  </p>
-
-  <p class="mb-2">
-    <% publication.images.each do |img| %>
-      <%= image_tag img, style: "max-height: 32rem", class: "me-2 mb-2" %>
-    <% end %>
-  </p>
-
+    <div class="col-xs-6 col-md-6 pt-2">
+      <p>
+        <strong><%= publication.name %></strong>        
+      </p>
+    
+      <p>
+        <strong>Descripción del puesto:</strong>
+        <%= publication.description %>
+      </p>
+    </div>
+  
+  </div>
 </div>

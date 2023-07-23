@@ -6,10 +6,10 @@
 #
 one:
   user: one
-  publication: first_publication
+  publication: one
 # column: value
 #
 two:
   user: two
-  publication: second_publication
+  publication: two
 # column: value

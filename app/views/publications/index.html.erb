@@ -1,16 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Publications</h1>
+<h1 class="ms-5 mt-2 mb-5 fw-bold" style="color: #693950">Ofertas de puesto</h1>
+
+<% if user_signed_in? && current_user.role == "admin" %> <!-- Primero el signed_in, luego el current_user -->
+  <%= link_to "Publicar nueva oferta", new_publication_path, class: "btn btn-warning my-3 fs-5" %>
+<% end %>
 
 <div id="publications">
   <% @publications.each do |publication| %>
     <%= render publication %>
     <p>
-      <%= link_to "Show this publication", publication %>
+      <%= link_to "Entrar a oferta", publication, class: "btn btn-primary text-white my-2" %>
     </p>
+    <hr>
   <% end %>
 </div>
-
-<% if user_signed_in? && current_user.role == "admin" %> <!-- Primero el signed_in, luego el current_user -->
-  <%= link_to "New publication", new_publication_path %>
-<% end %>
