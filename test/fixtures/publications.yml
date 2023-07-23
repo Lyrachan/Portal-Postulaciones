@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
+first_publication:
+  name: Primera publicacion
+  description: Informacion
 
-two:
-  name: MyString
-  description: MyString
+second_publication:
+  name: Segunda publicacion
+  description: Informacion
+
+third_publication:
+  name: Tercera publicacion
+  description: Informacion

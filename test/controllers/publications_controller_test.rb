@@ -2,10 +2,11 @@ require "test_helper"
 
 class PublicationsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @publication = publications(:one)
+    @publication = publications(:first_publication, :second_publication)
   end
 
   test "should get index" do
+    sign_in users(:one)
     get publications_url
     assert_response :success
   end
@@ -42,6 +43,11 @@ class PublicationsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Publication.count", -1) do
       delete publication_url(@publication)
     end
+
+  # test "should create postulation" do
+  #   assert_difference()
+  #     post publications_user_url,
+  # end
 
     assert_redirected_to publications_url
   end

@@ -1,13 +1,13 @@
 class PublicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_user!, except: [:index, :show]
+  # Dentro  del método authorize_admin, se verifica que el current_user.role sea "admin" o no, y 
+  # a partir de ahí permite ejecutar el CRUD de publicaciones y registro de usuarios
+  before_action :authorize_admin, only: [:register_user, :create_user, :new, :create, :update, :destroy]  
   before_action :set_publication, only: %i[ show edit update destroy ]
 
-  # Establecí "autentificación" para que sólo el administrador pueda crear usuario dentro de los métodos create_user y register_user
-  
-  # before_action only: [:create_user, :new, :create, :update, :destroy] do
-  #   authorize_request("admin")  # Sólo el administrador puede crear usuarios, crear y editar publicaciones
-  # end
+
+  # La creación de usuarios está en este mismo controlador, en la sección de ##### Controladores Adicionales #####
 
 
   # GET /publications or /publications.json
@@ -68,7 +68,7 @@ class PublicationsController < ApplicationController
     end
   end
 
-#########################################################################
+###########################################################################################################################
                   # Controladores adicionales
 
   def mypostulations
@@ -105,6 +105,13 @@ class PublicationsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def authorize_admin
+    if current_user.role != "admin"
+      flash[:alert] = "No tienes permiso para realizar esta acción"
+      redirect_to root_path
+    end
+  end
   
 
 # Está copiado desde Crazy4Cats, así que lo tengo que adaptar para este proyecto
@@ -121,7 +128,7 @@ def new_user_postulation
 
   redirect_to @publication, notice: "Postulación recibida"
 end
-#########################################################################
+#########################################################################################################################
 
 
   private
