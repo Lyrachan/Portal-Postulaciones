@@ -16,7 +16,6 @@ class PublicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create publication" do
-    sign_in users(:one)
     assert_difference("Publication.count") do
       post publications_url, params:
       { publication: {
