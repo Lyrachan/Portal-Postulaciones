@@ -30,6 +30,9 @@ user1.images.attach(io: image_file, filename: 'help.png')
 user2 = User.create(email: "user1@user.com", password: "123456", name: "Juan Muñoz Phucc", age: 23, description: "Hola.")
 user2.images.attach(io: image_file2, filename: 'Da Phuc.jpg')
 
+# Agregué imágenes por seed con AWS sólo para los dos primeros usuarios
+
+
 # Como no se simula un sitio web con una cantidad masiva de usuarios, publicaciones y comentarios,
 # preferí generar los datos ficticios manualmente para que fueran más personalizados
 
