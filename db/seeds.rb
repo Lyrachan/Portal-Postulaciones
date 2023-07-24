@@ -8,33 +8,41 @@
 
 #Esta sección se me hubiera hecho muuuuuuuy complicada de descubrir si no fuera por San-Google y San-GPT
 
+    # AL FINAL NO PUDE USER ESTE MÉTODO PARA HACER SEED CON VARIABLES DE ENTORNO, RENDER NO ME LAS RECONOCÍA AL HACER EL SEED ):
+
 # Es necesario cargar las gemas 
 
-require 'open-uri'
-require 'aws-sdk-s3'
+# require 'open-uri'
+# require 'aws-sdk-s3'
 
 # Se descarga la imagen desde S3 para usarla en la memoria del servidor del proyecto
 # Para lograr descargar la imagen, se crea un cliente en la memoria temporal para poder
 # tener acceso al archivo del bucket, y luego registrarlos en la base de datos con el seed
 # Definí los valores con variables de entorno para fomentar la buena práctica en el código
-s3_client = Aws::S3::Client.new(region: ENV['region'])
-bucket_name = ENV['bucket']
-object_key = 'help.png'
-object_key2 = 'Da Phuc.jpg'
-image_file = s3_client.get_object(bucket: bucket_name, key: object_key).body
-image_file2 = s3_client.get_object(bucket: bucket_name, key: object_key2).body
+# s3_client = Aws::S3::Client.new(region: ENV['region'])
+# bucket_name = ENV['bucket']
+# object_key = 'help.png'
+# object_key2 = 'Da Phuc.jpg'
+# image_file = s3_client.get_object(bucket: bucket_name, key: object_key).body
+# image_file2 = s3_client.get_object(bucket: bucket_name, key: object_key2).body
 
-user1 = User.create(email: "esteban@jefe.com", password: "123456", name: "Esteban", role: 1)
-user1.images.attach(io: image_file, filename: 'help.png')
+# user1 = User.create(email: "esteban@jefe.com", password: "123456", name: "Esteban", role: 1)
+# user1.images.attach(io: image_file, filename: 'help.png')
 
-user2 = User.create(email: "user1@user.com", password: "123456", name: "Juan Muñoz Phucc", age: 23, description: "Hola.")
-user2.images.attach(io: image_file2, filename: 'Da Phuc.jpg')
+# user2 = User.create(email: "user1@user.com", password: "123456", name: "Juan Muñoz Phucc", age: 23, description: "Hola.")
+# user2.images.attach(io: image_file2, filename: 'Da Phuc.jpg')
 
 # Agregué imágenes por seed con AWS sólo para los dos primeros usuarios
 
 
 # Como no se simula un sitio web con una cantidad masiva de usuarios, publicaciones y comentarios,
 # preferí generar los datos ficticios manualmente para que fueran más personalizados
+
+#id 1
+User.create(email: "esteban@jefe.com", password: "123456", name: "Esteban", role: 1)
+
+#id 2
+User.create(email: "user1@user.com", password: "123456", name: "Juan Muñoz Phucc", age: 23, description: "Hola.")
 
 #id 3
 User.create(email: "user2@user.com", password: "123456", name: "Martín Castañeda Villarroel", age: 38, description: "Electricista con un amplio campo de experiencia, ejerciendo hace 16 años en la instalación de redes eléctricas y mantención.")
