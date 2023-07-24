@@ -1,6 +1,21 @@
 <div class="container">
   <h2 class="mt-4 mb-2">Ingresar</h2>
 
+  <div>
+    <p>email administrador (Esteban): esteban@jefe.com</p>
+    <p>contraseña: 123456</p>
+  </div>
+
+  <div class="my-2">
+    <p>email usuario normal: user1@user.com</p>
+    <p>contraseña: 123456</p>
+  </div>
+
+  <p class="my-2">Hay hasta user5, con la misma contraseña para todos</p>
+
+
+
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="row">
       <div class="col-md-6">
