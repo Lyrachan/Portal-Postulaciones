@@ -27,7 +27,7 @@ image_file2 = s3_client.get_object(bucket: bucket_name, key: object_key2).body
 user1 = User.create(email: "esteban@jefe.com", password: "123456", name: "Esteban", role: 1)
 user1.images.attach(io: image_file, filename: 'help.png')
 
-user2 = User.create(email: "user1@user.com", password: "123456", name: "Da Phuc Huang", age: 23, description: "Hola.")
+user2 = User.create(email: "user1@user.com", password: "123456", name: "Juan Muñoz Phucc", age: 23, description: "Hola.")
 user2.images.attach(io: image_file2, filename: 'Da Phuc.jpg')
 
 # Como no se simula un sitio web con una cantidad masiva de usuarios, publicaciones y comentarios,
