@@ -3,7 +3,7 @@ class PublicationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   # Dentro  del método authorize_admin, se verifica que el current_user.role sea "admin" o no, y 
   # a partir de ahí permite ejecutar el CRUD de publicaciones y registro de usuarios
-  before_action :authorize_admin, only: [:register_user, :create_user, :new, :create, :update, :destroy]  
+  before_action :authorize_admin, only: [:register_user, :create_user, :users_postulations, :new, :create, :update, :destroy]  
   before_action :set_publication, only: %i[ show edit update destroy ]
 
 
@@ -78,6 +78,11 @@ class PublicationsController < ApplicationController
     @postulations = user.publications # Me resultó, de alguna manera que aún no determino, pero me manejo mejor con controladores :D
   end
 
+  def users_postulations
+    @users = User.all
+    @publications = Publication.all
+  end
+
   def register_user
     if current_user.admin?
       @user = User.new
@@ -121,7 +126,7 @@ class PublicationsController < ApplicationController
 def new_user_postulation
   
   @publication = Publication.find(params[:publication_id]) if params[:publication_id]
-  current_user.publications << @publication
+  current_user.publications << @publication # Aquí tuve que investigar para añadirle la publicación al usuario como postulación
 
   # @user = params[:user] # Esta línea estaba generando error, porque en la línea de arriba el usuario está planteado como current_user
   PublicationsMailer.with(user: current_user, publication: @publication).postulate_user.deliver_now

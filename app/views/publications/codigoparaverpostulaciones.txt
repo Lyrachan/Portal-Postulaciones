@@ -1,0 +1,9 @@
+<!-- Código de página de postulaciones -->
+
+<% @users.each do |user| %>
+  <td><%= user.name %></td>
+  <td><%= user.description %></td>
+    <% user.publications.each do |publication| %>
+      <td><%= publication.name %></td> <!-- Probar a poner un link to -->
+    <% end %>    
+<% end %>  

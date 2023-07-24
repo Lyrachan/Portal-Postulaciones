@@ -16,6 +16,7 @@
 
                 <% if current_user.role == "admin" %> 
                     <!-- < %= link_to "Mis Publicaciones", publications_path, class: "btn text-info" %> -->
+                    <%= link_to "Postulaciones recibidas", postulations_received_path, class: "nav-link active btn text-info" %>
                     <%= link_to "Registrar Usuario", register_user_path, class: "nav-link active btn text-info" %>
                 <% end %>
 

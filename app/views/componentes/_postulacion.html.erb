@@ -1,0 +1,10 @@
+<tr id="<%= dom_id user %>">   <!-- IMPORTANTE DEFINIR EL ID DEL USUARIO -->
+    
+        <td style="background-color: #FFF0F0;"><%= user.name %></td>
+        <td style="background-color: #FFF0F0;"><%= user.description %></td>
+        <td style="background-color: #FFF0F0;">
+            <% user.publications.each do |publication| %>
+                <li><%= link_to "#{ publication.name }", publication %></li> <!-- Probar a poner un link to -->
+            <% end %> 
+        </td>    
+</tr>

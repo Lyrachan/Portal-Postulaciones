@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/registrar_usuario', to: 'publications#register_user', as: 'register_user'
   post '/crear_usuario', to: 'publications#create_user', as: 'create_user'
   get '/portal_postulaciones', to: 'pages#index'
+  get '/postulaciones_recibidas', to: 'publications#users_postulations', as: 'postulations_received'
   # Defines the root path route ("/")
   # root "articles#index"
 

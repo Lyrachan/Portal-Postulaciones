@@ -1,0 +1,17 @@
+<table class="table table-bordered mt-5 mb-4">
+  <thead>
+    <tr class="fs-3">
+      <th scope="col" style="background-color: #dbadff">Trabajador</th>
+      <th scope="col" style="background-color: #dbadff">Descripción laboral</th>
+      <th scope="col" style="background-color: #dbadff">Postulación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <% @users.each do |user| %>
+            <%= render 'componentes/postulacion', user: user unless user.role == "admin" %> <!-- Como la "postulación" corresponde a una tabla intermedia entre user y publication, el jefe, quien publica, contará como "postulado", así que con el unless evito referirme a él en la tabla de postulaciones-->
+        <% end %>  
+      </tr>
+  </tbody>
+</table>
+
